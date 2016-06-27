@@ -32,16 +32,20 @@ date || credit || debit || balance
 ### User Stories
 As a client
 So that I can deposit and withdrawal money
-I need an Account
+I need an account with a balance
 
 As a client
-So that I can deposit money
+So that I can deposit money to my account
+I need a deposit facility
+
+As a client
+So that I can withdraw money from my account
 I need a deposit facility
 
 As a client
 So that I can keep track of my account usage
-I would like an account statement
+I would like an account statement that includes the date, credit and debit
 
 As a client
 So that I can make sense of the statement
-I would like it printed in a readable format. 
+I would like it printed in a readable format.
