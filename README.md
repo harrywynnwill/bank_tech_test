@@ -27,3 +27,21 @@ date || credit || debit || balance
 
 * Statement filters (just deposits, withdrawals, date ascending, date descending)
 * Graphical interface
+
+
+### User Stories
+As a client
+So that I can deposit and withdrawal money
+I need an Account
+
+As a client
+So that I can deposit money
+I need a deposit facility
+
+As a client
+So that I can keep track of my account usage
+I would like an account statement
+
+As a client
+So that I can make sense of the statement
+I would like it printed in a readable format. 
