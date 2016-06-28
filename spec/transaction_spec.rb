@@ -16,7 +16,7 @@ describe Transaction do
       # expect(test_account.account).to eq [[date, 10,"",10]]
     end
   end
-  describe '#debit' do
+  xdescribe '#debit' do
     it "withdrawls money to the account and stores the date" do
       transaction.debit(test_account, 10)
       # expect(test_account.account).to eq [[date,"", 10, -10]]

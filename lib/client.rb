@@ -8,6 +8,7 @@ class Client
   end
 
 
+
   def minus_balance sum
     @balance -= sum
   end
@@ -15,4 +16,6 @@ class Client
   def plus_balance sum
     @balance += sum
   end
+
+
 end

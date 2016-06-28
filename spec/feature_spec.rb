@@ -12,9 +12,9 @@ describe "make credits and deposit and print a statement" do
     harry = Client.new
     transaction = Transaction.new
     statement = Statement.new
-    transaction.debit harry, 500, date = Date.parse("2012/01/14")
+    transaction.debit harry, 500, date = Date.parse("14-01-2012")
     transaction.credit harry, 2000, date = Date.parse("2012/01/13")
-    transaction.credit harry, 1000, date = Date.parse("12012/01/10")
+    transaction.credit harry, 1000, date = Date.parse("2012/01/10")
 
     expect(statement.print_statement harry).to eq expected_output
   end
