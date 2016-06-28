@@ -1,15 +1,17 @@
 class Transaction
 
-DATE = Date.today.strftime("%F")
 
 
- def credit client, value
+
+ def credit client, value, date = Date.today
+
    client.plus_balance value
-   client.account.push([DATE, value,"", client.balance])
+   client.account.push([date, value,"", client.balance])
  end
 
- def debit client, value
+ def debit client, value, date = Date.today
+
    client.minus_balance value
-   client.account.push([DATE,"" ,value, client.balance])
+   client.account.push([date ,"" ,value, client.balance])
  end
 end
