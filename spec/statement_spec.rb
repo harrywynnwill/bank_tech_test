@@ -1,25 +1,27 @@
 require 'statement'
 describe Statement do
   let(:statement) {Statement.new}
-  let(:test_account) {Account.new}
-  let(:date){ Date.today}
-  before do
 
-    allow(Date).to receive(:today).and_return("2016-06-27")
+  let(:transaction1) {double :transaction1, date: Date.parse("10/01/2012"), credit: 1000, debit: 0}
+  let(:transaction2) {double :transaction2, date: Date.parse("13/01/2012"), credit: 2000, debit: 0}
+  let(:transaction3) {double :transaction3, date: Date.parse("14/01/2012"), credit: 0, debit: 500}
+  let(:test_account) {double :account, transactions: [transaction3, transaction2, transaction1]}
 
-  end
+
+
+  let(:expected_output) {"date || credit || debit || balance
+14/01/2012 ||  || 500.00 || 2500.00
+13/01/2012 || 2000.00 ||  || 3000.00
+10/01/2012 || 1000.00 ||  || 1000.00"}
+
+it "initializes with a balance of zero" do
+  expect(statement.balance).to eq 0
+end
+
+
   describe "#print_statement" do
     it "prints a statement" do
-      test_account.debit(50)
-      test_account.debit(80)
-      test_account.credit(60)
-      expect(statement.print_statement(test_account)).to eq "date || credit || debit || balance\n#{date}|| || 50.00|| -50.00\n#{date}|| || 80.00|| -130.00\n#{date}|| 60.00|| || -70.00\n"
-    end
-  end
-  describe "#format_statement" do
-    it "formats the statement to 2 decimal places" do
-      test_account.credit(60)
-      expect(statement.format_statement(test_account)).to include [["60.00"]]
+      expect(statement.print_statement(test_account)).to eq expected_output
     end
   end
 end

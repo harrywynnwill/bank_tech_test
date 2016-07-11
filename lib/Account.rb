@@ -1,30 +1,23 @@
+require "./lib/transaction.rb"
+require "./lib/statement.rb"
+
 class Account
 
-  attr_reader :balance, :transactions
+   attr_reader :balance, :transactions
 
-  def initialize
+  def initialize transaction = Transaction
+    @transaction = transaction
     @transactions = []
-    @balance = 0
   end
 
-  def credit value, date = Date.today
-    plus_balance value
-    transactions.push([date, value, "", balance])
+  def credit date = Date.today, credit
+    transactions << @transaction.new(date, credit, 0)
   end
 
-  def debit value, date = Date.today
-    minus_balance value
-    transactions.push([date,"" , value, balance])
+  def debit date = Date.today, debit
+    transactions << @transaction.new(date, 0, debit)
   end
 
-private
 
-  def minus_balance sum
-    @balance -= sum
-  end
-
-  def plus_balance sum
-    @balance += sum
-  end
 
 end
